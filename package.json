@@ -6,7 +6,7 @@
   "bin": "build/index.js",
   "scripts": {
     "prestart": "",
-    "start": "",
+    "start": "node build/index.js",
     "clean": "rm -rf build && mkdir build",
     "eslint": "eslint .",
     "build:babel": "babel ./src -d ./build -s",
