@@ -1,0 +1,43 @@
+{
+  "name": "martutest",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/index.js",
+  "bin": "build/index.js",
+  "scripts": {
+    "prestart": "",
+    "start": "",
+    "clean": "rm -rf build && mkdir build",
+    "eslint": "eslint .",
+    "build:babel": "babel ./src -d ./build -s",
+    "build": "npm run clean && npm run build:babel",
+    "pretest": "npm run eslint",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "Martu Amengual",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "conf": "^10.0.1",
+    "download-git-repo": "^3.0.2",
+    "execa": "^5.1.1",
+    "git-config-path": "^2.0.0",
+    "github-username": "^6.0.0",
+    "inquirer": "^8.1.2",
+    "ora": "^5.4.1",
+    "p-each-series": "^2.0.0",
+    "parse-git-config": "^3.0.0",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-flow": "^7.14.5",
+    "@babel/runtime": "^7.14.8",
+    "eslint": "^7.32.0"
+  }
+}
