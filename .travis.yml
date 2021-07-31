@@ -11,6 +11,3 @@ cache:
 script:
   - npm install -g codecov
   - yarn test
-env:
-  global:
-    - CODECOV_TOKEN='57e7a393-6480-4cd8-82d9-cb7fcb8a26e4'
