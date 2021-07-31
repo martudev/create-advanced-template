@@ -11,8 +11,8 @@
     "eslint": "eslint .",
     "build:babel": "babel ./src -d ./build -s",
     "build": "npm run clean && npm run build:babel",
-    "pretest": "npm run eslint",
-    "test": ""
+    "pretest:test": "npm run eslint",
+    "test": "jest && codecov"
   },
   "keywords": [],
   "author": "Martu Amengual",
@@ -38,6 +38,11 @@
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-flow": "^7.14.5",
     "@babel/runtime": "^7.14.8",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }

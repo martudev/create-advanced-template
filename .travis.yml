@@ -1,0 +1,8 @@
+sudo: false
+language: node_js
+before_install:
+  - npm install -g codecov
+script:
+  - yarn test
+env:
+  - CODECOV_TOKEN="57e7a393-6480-4cd8-82d9-cb7fcb8a26e4"
