@@ -2,8 +2,8 @@
   "name": "martutest",
   "version": "0.0.1",
   "description": "",
-  "main": "build/index.js",
-  "bin": "build/index.js",
+  "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "prestart": "",
     "start": "node build/index.js",
@@ -12,7 +12,8 @@
     "build:babel": "babel ./src -d ./build -s",
     "build": "npm run clean && npm run build:babel",
     "pretest:test": "npm run eslint",
-    "test": "jest --ci --coverage && codecov --disable=gcov"
+    "test": "jest && codecov --disable=gcov",
+    "test:cov": "jest && codecov --disable=gcov --token=57e7a393-6480-4cd8-82d9-cb7fcb8a26e4"
   },
   "keywords": [],
   "author": "Martu Amengual",
@@ -43,6 +44,8 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "moduleFileExtensions": ["js"],
+    "collectCoverageFrom": ["./src/index.js"]
   }
 }
