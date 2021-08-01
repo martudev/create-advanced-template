@@ -9,6 +9,7 @@
     "start": "node build/index.js",
     "clean": "rm -rf build && mkdir build",
     "eslint": "eslint .",
+    "husky:install": "husky install",
     "build:babel": "babel ./src -d ./build -s",
     "build": "npm run clean && npm run build:babel",
     "pretest:test-<change this": "npm run eslint",
@@ -16,7 +17,7 @@
     "test": "npm run jest && codecov --disable=gcov",
     "test:watch": "npm run jest --watchAll",
     "test:upload": "npm run test --token=57e7a393-6480-4cd8-82d9-cb7fcb8a26e4",
-    "prepare": "npm run build",
+    "prepare": "npm run husky:install && npm run build",
     "cm": "git-cz"
   },
   "keywords": [],
@@ -68,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "npm test"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
