@@ -16,7 +16,8 @@
     "test": "npm run jest && codecov --disable=gcov",
     "test:watch": "npm run jest --watchAll",
     "test:upload": "npm run test --token=57e7a393-6480-4cd8-82d9-cb7fcb8a26e4",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "cm": "git-cz"
   },
   "keywords": [],
   "author": "Martu Amengual",
