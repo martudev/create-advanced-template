@@ -12,7 +12,7 @@
     "build:babel": "babel ./src -d ./build -s",
     "build": "npm run clean && npm run build:babel",
     "pretest:test": "npm run eslint",
-    "test": "jest && codecov"
+    "test": "jest --ci --coverage && codecov --disable=gcov"
   },
   "keywords": [],
   "author": "Martu Amengual",
