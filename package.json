@@ -46,6 +46,6 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "moduleFileExtensions": ["js"],
-    "collectCoverageFrom": ["./src/index.js"]
+    "collectCoverageFrom": ["./src/**/*.js"]
   }
 }
