@@ -1,6 +1,6 @@
 
 
-const Config = require('conf')
+import Conf from 'conf'
 
 
-module.exports = new Config()
+export default new Conf()

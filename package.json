@@ -2,18 +2,20 @@
   "name": "martutest",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "build/index.js",
+  "bin": "build/index.js",
   "scripts": {
-    "prestart": "",
+    "prestart": "npm run build",
     "start": "node build/index.js",
     "clean": "rm -rf build && mkdir build",
     "eslint": "eslint .",
     "build:babel": "babel ./src -d ./build -s",
     "build": "npm run clean && npm run build:babel",
-    "pretest:test": "npm run eslint",
+    "pretest:test-<change this": "npm run eslint",
     "test": "jest && codecov --disable=gcov",
-    "test:cov": "jest && codecov --disable=gcov --token=57e7a393-6480-4cd8-82d9-cb7fcb8a26e4"
+    "test:watch": "jest --watchAll",
+    "test:upload": "jest && codecov --disable=gcov --token=57e7a393-6480-4cd8-82d9-cb7fcb8a26e4",
+    "prepare": "npm run build"
   },
   "keywords": [],
   "author": "Martu Amengual",
@@ -39,13 +41,18 @@
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-flow": "^7.14.5",
     "@babel/runtime": "^7.14.8",
+    "@types/jest": "^26.0.24",
     "eslint": "^7.32.0",
     "jest": "^27.0.6"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "moduleFileExtensions": ["js"],
-    "collectCoverageFrom": ["./src/**/*.js"]
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "collectCoverageFrom": [
+      "./src/**/*.js"
+    ]
   }
 }

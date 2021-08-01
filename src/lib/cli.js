@@ -1,14 +1,13 @@
-
-const inquirer = require('inquirer');
-const getQuestions = require('./questions.js')
-const awnser = require('./awnser')
+import inquirer from 'inquirer'
+import getQuestions from './questions.js'
+import { answers } from './awnser'
 
 
 module.exports = async () => {
     
     const questions = await getQuestions()
 
-    inquirer.prompt(questions).then(awnser)
+    inquirer.prompt(questions).then(answers)
 
 }
 

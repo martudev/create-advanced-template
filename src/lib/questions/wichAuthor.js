@@ -1,8 +1,7 @@
+import git from '../Git'
 
-const git = require('../Git')
 
-
-module.exports = async () => {
+export default async () => {
     
     const question = {
         type: 'input',

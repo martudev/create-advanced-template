@@ -1,23 +1,26 @@
-const download = require('download-git-repo');
-const path = require('path')
-const fs = require('fs')
-const chalk = require('chalk')
-const execa = require('execa')
-const ora = require('ora')
-const pEachSeries = require('p-each-series')
-const pkg = require('../../package.json')
+import download from 'download-git-repo'
+import path from 'path'
+import fs from 'fs'
+import chalk from 'chalk'
+import execa from 'execa'
+import ora from 'ora'
+import pEachSeries from 'p-each-series'
+import pkg from '../../package.json'
 
 
-const readFilesAndPrint = (path) => {
+
+export const readFilesAndPrint = (path) => {
     const files = fs.readdirSync(path)
 
     files.forEach(function (file) {
         console.log(file);
     })
 
+    return files
+
 }
 
-const initGitRepo = async (dest) => {
+export const initGitRepo = async (dest) => {
     const commands = [
         {
             cmd: 'git',
@@ -42,7 +45,7 @@ const initGitRepo = async (dest) => {
 }
 
 
-export default async answers => {
+export const answers = async answers => {
     
     const { projectName, templateName, authorName, license, repoName, packageManager, initializeGit } = answers
 

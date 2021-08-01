@@ -1,6 +1,6 @@
 
 
-module.exports = async () => {
+export default async () => {
     
     const question = {
         type: 'input',

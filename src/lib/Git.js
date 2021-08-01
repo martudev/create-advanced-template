@@ -1,7 +1,8 @@
 
-const getGitConfigPath = require('git-config-path')
-const githubUsername = require('github-username')
-const parseGitConfig = require('parse-git-config')
+import getGitConfigPath from 'git-config-path'
+import githubUsername from 'github-username'
+import parseGitConfig from 'parse-git-config'
+
 
 class Git {
 
@@ -25,4 +26,4 @@ class Git {
 
 
 
-module.exports = Git
+export default Git

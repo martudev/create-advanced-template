@@ -1,13 +1,13 @@
 
-const getProjectName = require('./questions/projectName')
-const getWichTemplate = require('./questions/wichTemplate')
-const getWichAuthor = require('./questions/wichAuthor')
-const getWichRepo = require('./questions/wichRepo')
-const getWichLicense = require('./questions/wichLicense')
-const getWichPackageManager = require('./questions/wichPackageManager')
-const getInitializeGitRepo = require('./questions/initializeGitRepo')
+import getProjectName from './questions/projectName'
+import getWichTemplate from './questions/wichTemplate'
+import getWichAuthor from './questions/wichAuthor'
+import getWichRepo from './questions/wichRepo'
+import getWichLicense from './questions/wichLicense'
+import getWichPackageManager from './questions/wichPackageManager'
+import getInitializeGitRepo from './questions/initializeGitRepo'
 
-module.exports = async () => {
+export default async () => {
     return [
         await getProjectName(),
         await getWichTemplate(),
