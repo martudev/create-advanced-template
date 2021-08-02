@@ -18,15 +18,15 @@
 
 ## Getting Started
 
-### NPX
+**npx**
 
 `npx create-advanced-template`
 
-### NPM
+**npm**
 
 `npm install -g create-advanced-template`
 
-### YARN
+**yarn**
 
 `yarn install -g create-advanced-template`
 
