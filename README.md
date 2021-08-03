@@ -16,20 +16,39 @@
 
 ---
 
-## Getting Started
+## Table of Contents
+
+1.  [Documentation](#documentation)
+    1.  [Getting Started](#getting-started)
+    1.  [How to use](#how-to-use)
+2.  [Incoming Features](#incoming-features)
+3.  [Contributing](#contributing)
+4.  [License](#license)
+
+---
+
+## [Documentation](#documentation)
+
+### [Getting Started](#getting-started)
 
 **npx**
 
-`npx create-advanced-template`
+      npx create-advanced-template
 
 **npm**
 
-`npm install -g create-advanced-template`
+      npm install -g create-advanced-template
+      create-advanced-template
 
 **yarn**
 
-`yarn install -g create-advanced-template`
+      yarn global add create-advanced-template
+      create-advanced-template
 
-## License
+## [Incoming Features](#incoming-features)
+
+## [Contributing](#contributing)
+
+## [License](#license)
 
 Created by martuuamengual. **MIT** license
