@@ -69,13 +69,13 @@ Once executed, some questions will be asked to configure the template.
 
 #### `create-advanced-template template-example-name`
 
-This command would create an app using the template we provide. In our case, our template would be `template-example-name`. **It is important that the template name must exist in the organization `@react-template`**
+This command would create an app using the template we provide. In our case, our template would be `template-example-name`. **It is important that the template name must exist in the organization `@react-templating`**. If you want to create you're own template see [How to create my own template](#how-to-create-my-own-template)
 
 ---
 
 #### `create-advanced-template https://github.com/user/template-name.git`
 
-This command would create an app using the template we provide but with the difference that said template **does not need to be in the organization @react-template**
+This command would create an app using the template we provide but with the difference that said template **does not need to be in the organization @react-templating**
 
 ---
 
