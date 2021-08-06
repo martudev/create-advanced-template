@@ -52,11 +52,8 @@ export const answers = async answers => {
     const downloadPath = path.join(process.cwd(), `${projectName}`)
 
     if(fs.existsSync(downloadPath)) {
-        //console.log(chalk.red.bold`X`, chalk.red`Check directory ${downloadPath} the folder alredy exsits.`)
-        //return
-
-        // ELIMINAR ESTO!
-        fs.rmdirSync(downloadPath, { recursive: true, force: true })
+        console.log(chalk.red.bold`X`, chalk.red`Check directory ${downloadPath} the folder alredy exsits.`)
+        return
     }
 
     const promiseDownload = new Promise((resolve, reject) => {
@@ -66,20 +63,29 @@ export const answers = async answers => {
         })
     })
 
-    //await loading(`Copying template ${templateName}`, promiseDownload)
+    // Copying template..
     ora.promise(promiseDownload, `Copying template ${templateName}`)
     await promiseDownload
     readFilesAndPrint(downloadPath)
     console.log()
     console.log()
 
+    // Running npm install..
     const rootP = execa(packageManager, ['install'], { cwd: downloadPath }).catch(err => console.log(err))
-    ora.promise(rootP, `Running ${chalk.green`${packageManager} install`} in root app directory`)
+    ora.promise(rootP, `Running ${chalk.green`${packageManager} install`} in root app directory. It will take a few minutes`)
     await rootP
     console.log()
 
-    if (initializeGit) {
+    const pathToPackage = path.join(downloadPath, 'package.json')
+    const packageJson = JSON.parse(fs.readFileSync(pathToPackage, 'utf-8'))
+    packageJson['name'] = projectName
+    packageJson['homepage'] = `https://github.com/${authorName}/${projectName}#readme`
+    packageJson['license'] = license
+    const packageToWriteData = JSON.stringify(packageJson, null, 2)
+    fs.writeFileSync(pathToPackage, packageToWriteData)
 
+    if (initializeGit) {
+        // Initializing git repo..
         const gitP = initGitRepo(downloadPath)
         ora.promise(gitP, `Initializing git repo in root app directory`)
         await gitP
