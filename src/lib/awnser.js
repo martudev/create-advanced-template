@@ -6,6 +6,8 @@ import execa from 'execa'
 import ora from 'ora'
 import pEachSeries from 'p-each-series'
 import pkg from '../../package.json'
+import { getTemplate } from './config'
+import axios from 'axios'
 
 
 
@@ -44,6 +46,11 @@ export const initGitRepo = async (dest) => {
     })
 }
 
+const getTemplateFullUrl = (templateName) => {
+    const template = getTemplate()
+    return (template.isValid ? `direct:${template.url}` : `direct:https://github.com/martuuamengual/${templateName}.git`)
+}
+
 
 export const answers = async answers => {
     
@@ -57,15 +64,23 @@ export const answers = async answers => {
     }
 
     const promiseDownload = new Promise((resolve, reject) => {
-        download(`direct:https://github.com/martuuamengual/${templateName}.git`, downloadPath, { clone: true }, function(err) {
-            if(err) reject(err)
-            resolve()
+        const templateUrl = getTemplateFullUrl(templateName)
+        axios.get(templateUrl.replace('.git', '').replace('direct:', ''))
+        .then(response => {
+            download(templateUrl, downloadPath, { clone: true }, function(err) {
+                if(err) reject('An error ocurs when cloning github repo')
+                resolve('Done')
+            })
+        }).catch(data => {
+            reject(`The repository ${templateUrl.replace('direct:', '')} response with status ${chalk.bgRed`${data.response.statusText}`}`)
         })
     })
 
     // Copying template..
-    ora.promise(promiseDownload, `Copying template ${templateName}`)
-    await promiseDownload
+    const template = getTemplate()
+    ora.promise(promiseDownload, `Copying template ${template.isValid ? template.name : templateName}`)
+    const done = await promiseDownload.catch(err => console.log(err))
+    if (!done) return
     readFilesAndPrint(downloadPath)
     console.log()
     console.log()
@@ -79,8 +94,9 @@ export const answers = async answers => {
     const pathToPackage = path.join(downloadPath, 'package.json')
     const packageJson = JSON.parse(fs.readFileSync(pathToPackage, 'utf-8'))
     packageJson['name'] = projectName
-    packageJson['homepage'] = `https://github.com/${authorName}/${projectName}#readme`
+    packageJson['homepage'] = `https://github.com/${repoName}#readme`
     packageJson['license'] = license
+    packageJson['author'] = authorName
     const packageToWriteData = JSON.stringify(packageJson, null, 2)
     fs.writeFileSync(pathToPackage, packageToWriteData)
 

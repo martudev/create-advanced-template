@@ -1,13 +1,17 @@
 import inquirer from 'inquirer'
 import getQuestions from './questions.js'
 import { answers } from './awnser'
+import { setTemplate } from './config'
 
 
 module.exports = async () => {
     
+    setTemplate()
+    
     const questions = await getQuestions()
 
     inquirer.prompt(questions).then(answers)
+
 
 }
 

@@ -1,5 +1,5 @@
 {
-  "name": "create-advanced-template",
+  "name": "testm",
   "version": "0.0.1",
   "description": "",
   "main": "build/index.js",
@@ -24,6 +24,7 @@
   "author": "Martu Amengual",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "chalk": "^4.1.2",
     "conf": "^10.0.1",
     "download-git-repo": "^3.0.2",
