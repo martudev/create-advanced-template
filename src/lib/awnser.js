@@ -48,7 +48,7 @@ export const initGitRepo = async (dest) => {
 
 const getTemplateFullUrl = (templateName) => {
     const template = getTemplate()
-    return (template.isValid ? `direct:${template.url}` : `direct:https://github.com/martuuamengual/${templateName}.git`)
+    return (template.isValid ? `direct:${template.url}` : `direct:https://github.com/react-templating/${templateName}.git`)
 }
 
 

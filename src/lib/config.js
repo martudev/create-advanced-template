@@ -32,7 +32,7 @@ export const getTemplate = () => {
         nameFromUrl = httpsArray[httpsArray.length-1]
     }
     const name = (!isUrl ? tempalteFromConf : nameFromUrl)
-    const url = (isUrl ? tempalteUrlFromConf : `https://github.com/martuuamengual/${name}.git`)
+    const url = (isUrl ? tempalteUrlFromConf : `https://github.com/react-templating/${name}.git`)
     const isValid = (tempalteUrlFromConf || tempalteFromConf ? true : false)
 
     return {
