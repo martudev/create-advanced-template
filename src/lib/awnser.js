@@ -48,7 +48,7 @@ export const initGitRepo = async (dest) => {
 
 const getTemplateFullUrl = (templateName) => {
     const template = getTemplate()
-    return (template.isValid ? `direct:${template.url}` : `direct:https://github.com/react-templating/${templateName}.git`)
+    return (template.isValid ? `direct:${template.url}` : `direct:https://github.com/react-templating/${templateName}.git#master`)
 }
 
 
@@ -68,7 +68,7 @@ export const answers = async answers => {
         axios.get(templateUrl.replace('.git', '').replace('direct:', ''))
         .then(response => {
             download(templateUrl, downloadPath, { clone: true }, function(err) {
-                if(err) reject('An error ocurs when cloning github repo')
+                if(err) reject(`An error ocurs when cloning github repo \n ${err}`)
                 resolve('Done')
             })
         }).catch(data => {
@@ -86,10 +86,13 @@ export const answers = async answers => {
     console.log()
 
     // Running npm install..
-    const rootP = execa(packageManager, ['install'], { cwd: downloadPath }).catch(err => console.log(err))
-    ora.promise(rootP, `Running ${chalk.green`${packageManager} install`} in root app directory. It will take a few minutes`)
-    await rootP
-    console.log()
+    if (packageManager != 'none') {
+        const rootP = execa(packageManager, ['install'], { cwd: downloadPath }).catch(err => console.log(err))
+        ora.promise(rootP, `Running ${chalk.green`${packageManager} install`} in root app directory. It will take a few minutes`)
+        await rootP
+        console.log()
+    }
+
 
     const pathToPackage = path.join(downloadPath, 'package.json')
     const packageJson = JSON.parse(fs.readFileSync(pathToPackage, 'utf-8'))
@@ -100,10 +103,17 @@ export const answers = async answers => {
     const packageToWriteData = JSON.stringify(packageJson, null, 2)
     fs.writeFileSync(pathToPackage, packageToWriteData)
 
+
     if (initializeGit) {
         // Initializing git repo..
         const gitP = initGitRepo(downloadPath)
         ora.promise(gitP, `Initializing git repo in root app directory`)
         await gitP
+    }
+
+    console.log(`Template configuration ${chalk.green`done`} 🐺 Auuuuu`)
+
+    return {
+        status: 'ok'
     }
 }

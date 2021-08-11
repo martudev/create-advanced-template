@@ -85,7 +85,7 @@ By default the supported templates are found in this [link](docs/builtin-templat
 
 ## [Incoming Features](#incoming-features)
 
-Nothing for now 😁
+- [ ] Download a specific version of an template
 
 ## [Contributing](#contributing)
 

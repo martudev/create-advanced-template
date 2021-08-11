@@ -9,13 +9,18 @@ export default async () => {
         choices: [
             {
                 key: '1',
-                name: 'NPM',
+                name: 'npm',
                 value: 'npm',
             },
             {
                 key: '2',
-                name: 'YARN',
+                name: 'yarn',
                 value: 'yarn',
+            },
+            {
+                key: '3',
+                name: 'none',
+                value: 'none',
             }
         ]
     }
